@@ -1,0 +1,57 @@
+syntax="proto3";
+
+package test;
+
+service Bibili{
+    rpc SayHello (HelloRequest) returns (HelloReply);
+    rpc SayTestHello (stream HelloTestRequest) returns (HelloTestReply);
+    rpc TestClientRecvStream(TestClientRecvStreamRequest ) returns (stream TestClientRecvStreamResponse){}
+    rpc TestClientSendStream(stream TestClientSendStreamRequest) returns (TestClientSendStreamResponse){}
+    rpc TestClientTwoStream(stream TestClientTwoStreamRequest) returns (stream TestClientTwoStreamResponse);
+}
+
+message HelloRequest{
+  string name =1;
+}
+message HelloReply{
+  string result=1;
+}
+
+message HelloTestRequest{
+  string name =1;
+  string age =2;
+  repeated string data =3;
+  map<string,ReqNumber> number =4;
+}
+
+message ReqNumber{
+  string name=1;
+  int32  age =2;
+  bool is_active=3;
+}
+
+message HelloTestReply{}
+
+message TestClientRecvStreamRequest{
+  string data=1;
+}
+
+message TestClientRecvStreamResponse{
+  string result=1;
+}
+
+message TestClientSendStreamRequest{
+  string data=1;
+}
+
+message TestClientSendStreamResponse{
+  string result=1;
+}
+
+message TestClientTwoStreamRequest{
+  string data=1;
+}
+
+message TestClientTwoStreamResponse{
+  string result=1;
+}
