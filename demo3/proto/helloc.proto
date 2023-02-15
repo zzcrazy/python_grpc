@@ -37,6 +37,10 @@ message TestClientRecvStreamRequest{
 }
 
 message TestClientRecvStreamResponse{
+  int32 code = 1;
+  string msg =2;
+  string data= 3;
+  string age = 4;
   string result=1;
 }
 
